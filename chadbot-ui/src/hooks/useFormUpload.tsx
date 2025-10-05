@@ -1,26 +1,28 @@
 import { useState } from "react";
-import { User, UserProfile } from "../models/user";
 import { client } from "../utils/axiosInstance";
 
-export const useFormUpload = (
-    initialValues: UserProfile,
+export const useFormUpload = <T extends Record<string, any>>(
+    initialValues: T,
     onSuccessCallback?: (data: any) => void
 ) => {
-    const [formData, setFormData] = useState<UserProfile>(initialValues);
+    const [formData, setFormData] = useState<T>(initialValues);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
     // Handle input changes
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    ) => {
         const { name, value } = e.target;
 
         setFormData((prevData) => ({
             ...prevData,
-            [name]: name === "height" || name === "weight" || name === "age"
+            [name]: e.target.type === "number"
                 ? parseFloat(value) || 0
                 : value,
         }));
     };
+
     const resetForm = () => {
         setFormData(initialValues);
         setError(null);
