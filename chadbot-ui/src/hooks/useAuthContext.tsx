@@ -1,4 +1,5 @@
 import { User } from "@/models/user";
+import { useRouter } from "next/router";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface AuthContextType {
@@ -14,6 +15,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
     const [token, setToken] = useState<string | null>(null);
+    const router = useRouter();
 
     const login = (userData: User, token: string) => {
         setUser(userData);
@@ -27,6 +29,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setToken(null);
         localStorage.removeItem("authToken");
         localStorage.removeItem("user");
+        router.push("/")
     };
 
     const isAuthenticated = !!token;
