@@ -22,6 +22,27 @@ class PromptGenerator:
         )
         return classification_prompt
 
+    @staticmethod
+    def get_routine_prompt():
+        routine_prompt = ChatPromptTemplate.from_template(
+            """
+                You are an experienced personal trainer. The following question is asking you to give a gym routine:
+
+                <question>
+                {question}
+                </question>
+
+                The following data provides the user personal information and goal, so you can answer in a more personalized way:
+                <data>
+                {data}
+                <data>
+
+                Provide a personalized routine for the user. Mention his name for more familiarity. 
+                According to his current condition and goals make sure to give sets, weights and repetitions the user should do. 
+            """
+        )
+        return routine_prompt
+
     # @staticmethod
     # def get_prediction_prompt():
     #     prediction_prompt = ChatPromptTemplate.from_template(

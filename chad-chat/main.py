@@ -9,7 +9,7 @@ from langchain_core.runnables import RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 from langchain.globals import set_verbose, set_debug
 # from prefix_generator import get_set_up_prediction_prefix
-# from router import ChainRouter
+from router import ChainRouter
 
 
 # self.__llm = GoogleLLM('gemini-2.0-flash-lite', 0.0).get_llm()
@@ -37,35 +37,36 @@ class ChatBot:
         # self.__set_up_sql_agent = create_sql_agent(llm=self.__llm, toolkit=self.__sql_toolkit,
         #                                            prefix=get_set_up_prediction_prefix())
         # self.__set_up_sql_agent.handle_parsing_errors = True
-        # self.__router = self.__get_router()
+        self.__router = self.__get_router()
         self.__run()
 
     def __get_router(self):
         classification_prompt = self.__prompt_generator.get_classification_prompt()
         classification_chain = classification_prompt | self.__llm | StrOutputParser()
-        return classification_chain
-    #     prediction_prompt = self.__prompt_generator.get_prediction_prompt()
-    #     prediction_chain = prediction_prompt | self.__llm | StrOutputParser()
-    #     return ChainRouter(classification_chain, prediction_chain, self.__sql_agent, self.__set_up_sql_agent)
-    #
-    # def __get_full_chain(self):
-    #     return (RunnablePassthrough.assign(classification=lambda x: self.__router.route_query(x)) |
-    #             RunnableLambda(
-    #                 lambda x:
-    #                 (self.__router.handle_retrieval(x) if x["classification"] == "retrieval"
-    #                  else self.__router.handle_prediction(x) if x["classification"] == "prediction"
-    #                 else self.__router.handle_other(x))))
+
+        routine_prompt = self.__prompt_generator.get_routine_prompt()
+        routine_chain = routine_prompt | self.__llm | StrOutputParser()
+
+        return ChainRouter(classification_chain, routine_chain)
+
+    def __get_full_chain(self):
+        return (RunnablePassthrough.assign(classification=lambda x: self.__router.route_query(x)) |
+                RunnableLambda(
+                    lambda x:
+                    (self.__router.handle_retrieval(x) if x["classification"] == "retrieval"
+                     else self.__router.handle_routine(x) if x["classification"] == "routine"
+                    else self.__router.handle_other(x))))
 
     def __run(self):
-        # full_chain = self.__get_full_chain()
-        classification_chain = self.__get_router()
+        full_chain = self.__get_full_chain()
+
         while True:
             question = input("Enter your question > ")
 
             if question.lower() == "quit":
                 break
 
-            result = classification_chain.invoke({"question" : question})
+            result = full_chain.invoke({"question": question})
             print(result)
 
 
