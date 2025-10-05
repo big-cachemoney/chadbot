@@ -24,6 +24,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setIsLoading(true);
         const user = localStorage.getItem("user");
         const token = localStorage.getItem("authToken");
+      // TODO: implement API
+
         // const res = await client.get('/user', {
         //     headers: {
         //         Authorization: `Bearer ${token}`
