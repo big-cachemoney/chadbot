@@ -1,4 +1,4 @@
-# from prompt_generator import PromptGenerator
+from prompt_generator import PromptGenerator
 from aiven_database import get_aiven_db
 from langchain.chains import create_sql_query_chain
 from llms import GoogleLLM
@@ -28,7 +28,7 @@ class ChatBot:
     def __init__(self):
         set_debug(True)
         set_verbose(True)
-        # self.__prompt_generator = PromptGenerator()
+        self.__prompt_generator = PromptGenerator()
         self.__llm = GoogleLLM(GEMINI_2_5, 0.0).get_llm()
         self.__db = get_aiven_db()
         # self.__sql_toolkit = SQLDatabaseToolkit(db=self.__db, llm=self.__llm)
@@ -40,9 +40,10 @@ class ChatBot:
         # self.__router = self.__get_router()
         self.__run()
 
-    # def __get_router(self):
-    #     classification_prompt = self.__prompt_generator.get_classification_prompt()
-    #     classification_chain = classification_prompt | self.__llm | StrOutputParser()
+    def __get_router(self):
+        classification_prompt = self.__prompt_generator.get_classification_prompt()
+        classification_chain = classification_prompt | self.__llm | StrOutputParser()
+        pass
     #     prediction_prompt = self.__prompt_generator.get_prediction_prompt()
     #     prediction_chain = prediction_prompt | self.__llm | StrOutputParser()
     #     return ChainRouter(classification_chain, prediction_chain, self.__sql_agent, self.__set_up_sql_agent)
