@@ -43,7 +43,7 @@ class ChatBot:
     def __get_router(self):
         classification_prompt = self.__prompt_generator.get_classification_prompt()
         classification_chain = classification_prompt | self.__llm | StrOutputParser()
-        pass
+        return classification_chain
     #     prediction_prompt = self.__prompt_generator.get_prediction_prompt()
     #     prediction_chain = prediction_prompt | self.__llm | StrOutputParser()
     #     return ChainRouter(classification_chain, prediction_chain, self.__sql_agent, self.__set_up_sql_agent)
@@ -58,14 +58,14 @@ class ChatBot:
 
     def __run(self):
         # full_chain = self.__get_full_chain()
-
+        classification_chain = self.__get_router()
         while True:
             question = input("Enter your question > ")
 
             if question.lower() == "quit":
                 break
 
-            result = self.__llm.invoke(question)
+            result = classification_chain.invoke({"question" : question})
             print(result)
 
 
