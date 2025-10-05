@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthContext } from "@/hooks/useAuthContext";
 
 const Header: React.FC = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const { user, logout, isAuthenticated } = useAuthContext();
-
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
