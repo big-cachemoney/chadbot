@@ -1,23 +1,17 @@
 from prompt_generator import PromptGenerator
-from aiven_database import get_aiven_db
 from langchain.chains import create_sql_query_chain
 from llms import GoogleLLM
 from langchain.schema.runnable import RunnablePassthrough
-# from langchain_community.agent_toolkits.sql.base import create_sql_agent
-# from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 from langchain_core.runnables import RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
-from langchain.globals import set_verbose, set_debug
-# from prefix_generator import get_set_up_prediction_prefix
+
 from router import ChainRouter
 
 
 # self.__llm = GoogleLLM('gemini-2.0-flash-lite', 0.0).get_llm()
 # self.__llm = GoogleLLM('gemini-2.5-pro-exp-03-25', 0.0).get_llm()
 # self.__llm = GoogleLLM('gemini-2.0-flash', 0.0).get_llm()
-# self.__llm = DeepSeekLLM('deepseek-chat', 0.0).get_llm()
-# self.__llm = OpenAILLM('davinci-002', 0.0).get_llm()
-# self.__llm = HuggingFaceHub('google/flan-ul2', 0.0).get_llm()
+
 # Model names
 GEMINI_2_5 = "gemini-2.5-flash"
 
@@ -26,18 +20,9 @@ GEMINI_2_5 = "gemini-2.5-flash"
 class ChatBot:
 
     def __init__(self):
-        set_debug(True)
-        set_verbose(True)
         self.__prompt_generator = PromptGenerator()
         self.__llm = GoogleLLM(GEMINI_2_5, 0.0).get_llm()
-        self.__db = get_aiven_db()
-        # self.__sql_toolkit = SQLDatabaseToolkit(db=self.__db, llm=self.__llm)
-        # self.__sql_agent = create_sql_agent(llm=self.__llm, toolkit=self.__sql_toolkit)
-        # self.__sql_agent.handle_parsing_errors =True
-        # self.__set_up_sql_agent = create_sql_agent(llm=self.__llm, toolkit=self.__sql_toolkit,
-        #                                            prefix=get_set_up_prediction_prefix())
-        # self.__set_up_sql_agent.handle_parsing_errors = True
-        self.__router = self.__get_router()
+        self.__user_name = None
         self.__run()
 
     def __get_router(self):
@@ -47,7 +32,10 @@ class ChatBot:
         routine_prompt = self.__prompt_generator.get_routine_prompt()
         routine_chain = routine_prompt | self.__llm | StrOutputParser()
 
-        return ChainRouter(classification_chain, routine_chain)
+        latest_activity_prompt = self.__prompt_generator.get_activities_prompt()
+        activity_chain = latest_activity_prompt | self.__llm | StrOutputParser()
+
+        return ChainRouter(classification_chain, routine_chain, activity_chain, self.__user_name)
 
     def __get_full_chain(self):
         return (RunnablePassthrough.assign(classification=lambda x: self.__router.route_query(x)) |
@@ -59,6 +47,8 @@ class ChatBot:
 
     def __run(self):
         full_chain = self.__get_full_chain()
+        self.__user_name = input("Enter your username > ")
+        self.__router = self.__get_router()
 
         while True:
             question = input("Enter your question > ")

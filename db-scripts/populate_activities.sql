@@ -1,90 +1,102 @@
+-- User 2 (see): Health-conscious focused on weight increase and bulk, 3 times a week
+-- Strength training and bulking focused activities
 INSERT INTO activities (date, time, user_id, activity_name, sets, repetitions, duration) VALUES
--- Chest & Triceps Days
-('2024-09-20', '08:30:00', 1, 'bench-press', 4, 10, NULL),
-('2024-09-20', '08:45:00', 1, 'incline-press', 3, 12, NULL),
-('2024-09-20', '09:00:00', 1, 'tricep-extensions', 3, 15, NULL),
-('2024-09-20', '09:10:00', 1, 'push-ups', 3, 20, NULL),
+-- Week 1 - Strength and bulking focus
+('2024-01-08', '08:00:00', 2, 'Bench Press', 4, 8, NULL),
+('2024-01-08', '08:20:00', 2, 'Barbell Squats', 4, 6, NULL),
+('2024-01-08', '08:45:00', 2, 'Deadlifts', 3, 5, NULL),
+('2024-01-08', '09:00:00', 2, 'Pull-ups', 3, 10, NULL),
+('2024-01-10', '08:00:00', 2, 'Overhead Press', 4, 8, NULL),
+('2024-01-10', '08:25:00', 2, 'Bent-over Rows', 4, 8, NULL),
+('2024-01-10', '08:50:00', 2, 'Leg Press', 4, 10, NULL),
+('2024-01-12', '08:00:00', 2, 'Incline Bench Press', 4, 8, NULL),
+('2024-01-12', '08:20:00', 2, 'Romanian Deadlifts', 3, 8, NULL),
+('2024-01-12', '08:40:00', 2, 'Lat Pulldowns', 4, 10, NULL),
 
-('2024-09-17', '07:15:00', 1, 'dumbbell-press', 4, 10, NULL),
-('2024-09-17', '07:30:00', 1, 'cable-flyes', 3, 12, NULL),
-('2024-09-17', '07:45:00', 1, 'tricep-pushdown', 3, 15, NULL),
+-- Week 2 - Progressive overload
+('2024-01-15', '08:00:00', 2, 'Bench Press', 4, 8, NULL),
+('2024-01-15', '08:25:00', 2, 'Barbell Squats', 4, 6, NULL),
+('2024-01-15', '08:50:00', 2, 'Weighted Pull-ups', 3, 8, NULL),
+('2024-01-17', '08:00:00', 2, 'Overhead Press', 4, 8, NULL),
+('2024-01-17', '08:25:00', 2, 'Pendlay Rows', 4, 6, NULL),
+('2024-01-17', '08:45:00', 2, 'Front Squats', 3, 8, NULL),
+('2024-01-19', '08:00:00', 2, 'Close Grip Bench Press', 4, 8, NULL),
+('2024-01-19', '08:20:00', 2, 'Barbell Curls', 3, 10, NULL),
+('2024-01-19', '08:35:00', 2, 'Tricep Extensions', 3, 12, NULL),
 
--- Back & Biceps Days
-('2024-09-19', '17:45:00', 1, 'deadlifts', 4, 8, NULL),
-('2024-09-19', '18:00:00', 1, 'lat-pulldowns', 3, 12, NULL),
-('2024-09-19', '18:15:00', 1, 'bicep-curls', 3, 15, NULL),
-('2024-09-19', '18:25:00', 1, 'seated-rows', 3, 12, NULL),
+-- Week 3 - Hypertrophy focus
+('2024-01-22', '08:00:00', 2, 'Dumbbell Bench Press', 4, 12, NULL),
+('2024-01-22', '08:25:00', 2, 'Goblet Squats', 4, 12, NULL),
+('2024-01-22', '08:45:00', 2, 'Dumbbell Rows', 4, 12, NULL),
+('2024-01-24', '08:00:00', 2, 'Dumbbell Shoulder Press', 4, 12, NULL),
+('2024-01-24', '08:25:00', 2, 'Lunges', 3, 10, NULL),
+('2024-01-24', '08:45:00', 2, 'Face Pulls', 3, 15, NULL),
+('2024-01-26', '08:00:00', 2, 'Incline Dumbbell Press', 4, 12, NULL),
+('2024-01-26', '08:25:00', 2, 'Hammer Curls', 3, 12, NULL),
+('2024-01-26', '08:40:00', 2, 'Skull Crushers', 3, 12, NULL),
 
-('2024-09-14', '08:00:00', 1, 'pull-ups', 3, 10, NULL),
-('2024-09-14', '08:15:00', 1, 'barbell-rows', 4, 10, NULL),
-('2024-09-14', '08:30:00', 1, 'hammer-curls', 3, 12, NULL),
+-- Week 4 - Deload and technique
+('2024-01-29', '08:00:00', 2, 'Bench Press', 3, 8, NULL),
+('2024-01-29', '08:15:00', 2, 'Barbell Squats', 3, 5, NULL),
+('2024-01-31', '08:00:00', 2, 'Overhead Press', 3, 8, NULL),
+('2024-01-31', '08:15:00', 2, 'Bent-over Rows', 3, 8, NULL);
 
--- Leg Days
-('2024-09-18', '16:30:00', 1, 'squats', 4, 8, NULL),
-('2024-09-18', '16:45:00', 1, 'leg-press', 3, 12, NULL),
-('2024-09-18', '17:00:00', 1, 'lunges', 3, 10, NULL),
-('2024-09-18', '17:10:00', 1, 'leg-extensions', 3, 15, NULL),
+-- User 3 (nono): Weight loss focus to 90kg, currently inactive (zero activity level)
+-- Starting with light activities and progressing
+INSERT INTO activities (date, time, user_id, activity_name, sets, repetitions, duration) VALUES
+-- Week 1 - Starting light (walking and basic movements)
+('2024-01-08', '07:00:00', 3, 'Morning Walk', NULL, NULL, 20),
+('2024-01-09', '07:00:00', 3, 'Morning Walk', NULL, NULL, 25),
+('2024-01-10', '18:30:00', 3, 'Evening Walk', NULL, NULL, 30),
+('2024-01-11', '07:00:00', 3, 'Morning Walk', NULL, NULL, 25),
+('2024-01-12', '18:30:00', 3, 'Evening Walk', NULL, NULL, 35),
+('2024-01-13', '09:00:00', 3, 'Weekend Walk', NULL, NULL, 45),
 
-('2024-09-11', '07:30:00', 1, 'deadlifts', 4, 6, NULL),
-('2024-09-11', '07:45:00', 1, 'leg-curls', 3, 12, NULL),
-('2024-09-11', '08:00:00', 1, 'calf-raises', 4, 20, NULL),
+-- Week 2 - Adding light strength training
+('2024-01-15', '07:00:00', 3, 'Brisk Walk', NULL, NULL, 30),
+('2024-01-15', '19:00:00', 3, 'Bodyweight Squats', 3, 10, NULL),
+('2024-01-16', '07:00:00', 3, 'Morning Walk', NULL, NULL, 30),
+('2024-01-16', '19:00:00', 3, 'Push-ups', 3, 8, NULL),
+('2024-01-17', '18:30:00', 3, 'Evening Walk', NULL, NULL, 40),
+('2024-01-18', '07:00:00', 3, 'Brisk Walk', NULL, NULL, 35),
+('2024-01-18', '19:00:00', 3, 'Bodyweight Lunges', 3, 10, NULL),
+('2024-01-19', '18:30:00', 3, 'Evening Walk', NULL, NULL, 45),
+('2024-01-20', '09:00:00', 3, 'Park Walk', NULL, NULL, 60),
 
--- Shoulder Days
-('2024-09-16', '17:00:00', 1, 'overhead-press', 4, 10, NULL),
-('2024-09-16', '17:15:00', 1, 'lateral-raises', 3, 15, NULL),
-('2024-09-16', '17:25:00', 1, 'front-raises', 3, 12, NULL),
+-- Week 3 - Increasing intensity and adding gym exercises
+('2024-01-22', '07:00:00', 3, 'Brisk Walk', NULL, NULL, 40),
+('2024-01-22', '19:00:00', 3, 'Treadmill', NULL, NULL, 20),
+('2024-01-22', '19:25:00', 3, 'Machine Chest Press', 3, 12, NULL),
+('2024-01-23', '07:00:00', 3, 'Morning Walk', NULL, NULL, 35),
+('2024-01-23', '19:00:00', 3, 'Stationary Bike', NULL, NULL, 25),
+('2024-01-23', '19:30:00', 3, 'Leg Press Machine', 3, 12, NULL),
+('2024-01-24', '18:30:00', 3, 'Evening Walk', NULL, NULL, 50),
+('2024-01-25', '19:00:00', 3, 'Treadmill', NULL, NULL, 25),
+('2024-01-25', '19:30:00', 3, 'Lat Pulldown Machine', 3, 12, NULL),
+('2024-01-26', '18:30:00', 3, 'Brisk Walk', NULL, NULL, 45),
+('2024-01-27', '10:00:00', 3, 'Long Walk', NULL, NULL, 75),
 
--- Cardio Days
-('2024-09-15', '08:00:00', 1, 'treadmill', NULL, NULL, 1800),
-('2024-09-15', '08:30:00', 1, 'jumping-jacks', NULL, NULL, 300),
-('2024-09-12', '17:45:00', 1, 'stationary-bike', NULL, NULL, 1500),
-('2024-09-12', '18:10:00', 1, 'burpees', 3, 10, NULL),
+-- Week 4 - Establishing consistent routine
+('2024-01-29', '07:00:00', 3, 'Morning Walk', NULL, NULL, 40),
+('2024-01-29', '19:00:00', 3, 'Treadmill', NULL, NULL, 30),
+('2024-01-29', '19:35:00', 3, 'Machine Chest Press', 3, 15, NULL),
+('2024-01-29', '19:50:00', 3, 'Seated Row Machine', 3, 15, NULL),
+('2024-01-30', '07:00:00', 3, 'Brisk Walk', NULL, NULL, 35),
+('2024-01-30', '19:00:00', 3, 'Stationary Bike', NULL, NULL, 30),
+('2024-01-30', '19:35:00', 3, 'Leg Press Machine', 3, 15, NULL),
+('2024-01-30', '19:50:00', 3, 'Leg Curl Machine', 3, 15, NULL),
+('2024-01-31', '18:30:00', 3, 'Evening Power Walk', NULL, NULL, 55),
+('2024-02-01', '19:00:00', 3, 'Treadmill Intervals', NULL, NULL, 35),
+('2024-02-01', '19:40:00', 3, 'Shoulder Press Machine', 3, 15, NULL),
+('2024-02-01', '19:55:00', 3, 'Tricep Pushdown', 3, 15, NULL),
+('2024-02-02', '18:30:00', 3, 'Evening Walk', NULL, NULL, 50),
+('2024-02-03', '10:00:00', 3, 'Hiking Trail Walk', NULL, NULL, 90);
 
--- Core/Ab Days
-('2024-09-13', '07:00:00', 1, 'plank', NULL, NULL, 180),
-('2024-09-13', '07:05:00', 1, 'russian-twists', 3, 20, NULL),
-('2024-09-13', '07:15:00', 1, 'leg-raises', 3, 15, NULL),
-
--- Rest Days (no activities on these days)
--- 2024-09-10, 2024-09-07, 2024-09-04, etc.
-
--- Continuing the pattern for 100 days (showing more examples)
-('2024-09-06', '08:30:00', 1, 'bench-press', 4, 8, NULL),
-('2024-09-06', '08:45:00', 1, 'dips', 3, 12, NULL),
-
-('2024-09-05', '17:30:00', 1, 'bent-over-rows', 4, 10, NULL),
-('2024-09-05', '17:45:00', 1, 'face-pulls', 3, 15, NULL),
-
-('2024-09-03', '07:15:00', 1, 'squats', 5, 5, NULL),
-('2024-09-03', '07:30:00', 1, 'bulgarian-split-squats', 3, 10, NULL),
-
-('2024-09-02', '16:00:00', 1, 'shoulder-press', 4, 10, NULL),
-('2024-09-02', '16:15:00', 1, 'upright-rows', 3, 12, NULL),
-
-('2024-08-30', '08:00:00', 1, 'incline-bench', 4, 10, NULL),
-('2024-08-30', '08:15:00', 1, 'skull-crushers', 3, 12, NULL),
-
--- More entries to cover 100 days...
-('2024-08-29', '17:45:00', 1, 'pull-ups', 4, 8, NULL),
-('2024-08-29', '18:00:00', 1, 't-bar-rows', 3, 10, NULL),
-
-('2024-08-28', '07:30:00', 1, 'leg-press', 4, 12, NULL),
-('2024-08-28', '07:45:00', 1, 'walking-lunges', 3, 10, NULL),
-
-('2024-08-27', '16:30:00', 1, 'arnold-press', 3, 12, NULL),
-('2024-08-27', '16:45:00', 1, 'rear-delt-flyes', 3, 15, NULL),
-
-('2024-08-26', '08:15:00', 1, 'elliptical', NULL, NULL, 1200),
-('2024-08-26', '08:35:00', 1, 'mountain-climbers', NULL, NULL, 240),
-
--- Continue this pattern with proper body part grouping and rest days
--- Approximately 3-4 workout days per week, 1-2 cardio days, 2-3 rest days
-
-('2024-08-23', '17:00:00', 1, 'close-grip-bench', 4, 10, NULL),
-('2024-08-23', '17:15:00', 1, 'cable-crossovers', 3, 12, NULL),
-
-('2024-08-22', '07:45:00', 1, 'rack-pulls', 4, 6, NULL),
-('2024-08-22', '08:00:00', 1, 'lat-pulldowns', 3, 10, NULL),
-
-('2024-08-21', '16:00:00', 1, 'hack-squats', 4, 8, NULL),
-('2024-08-21', '16:15:00', 1, 'good-mornings', 3, 12, NULL);
+-- Additional cardio sessions for User 3 to support weight loss
+INSERT INTO activities (date, time, user_id, activity_name, sets, repetitions, duration) VALUES
+('2024-02-05', '19:00:00', 3, 'Swimming', NULL, NULL, 30),
+('2024-02-07', '19:00:00', 3, 'Elliptical Trainer', NULL, NULL, 35),
+('2024-02-09', '18:00:00', 3, 'Cycling', NULL, NULL, 40),
+('2024-02-12', '19:00:00', 3, 'Swimming', NULL, NULL, 35),
+('2024-02-14', '19:00:00', 3, 'Elliptical Trainer', NULL, NULL, 40),
+('2024-02-16', '17:30:00', 3, 'Cycling', NULL, NULL, 45);

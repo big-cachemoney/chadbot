@@ -1,14 +1,14 @@
 create table users
 (
     id               bigint generated always as identity primary key,
-    user_name        varchar(20) not null,
+    user_name        varchar(30) not null,
     height           numeric,
     weight           numeric,
     age              smallint,
     gender           varchar(20) not null,
-    goal             varchar(20) not null,
-    activity_level   varchar(20) not null,
-    chad_personality varchar(20) not null
+    goal             varchar(200) not null,
+    activity_level   varchar(200) not null,
+    chad_personality varchar(200) not null
 );
 
 comment on table users is 'Table with user data';
@@ -31,5 +31,5 @@ comment on table activities is 'Table with user activities.';
 alter table users
     owner to avnadmin;
 
--- drop table users;
--- drop table activities;
+drop table users;
+drop table activities;
