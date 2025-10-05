@@ -1,3 +1,5 @@
 .vscode
 .next
 .envpip 
+.env
+__pycache__
