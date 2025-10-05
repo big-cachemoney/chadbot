@@ -61,6 +61,7 @@ const WorkoutPage: NextPage = () => {
 
   const fetchWorkoutData = async () => {
     try {
+      // TODO: implement API
     //   const response = await client.get('/workout');
     //   setExercises(response.data.exercises || response.data || []);
     setExercises(sampleExercises)
@@ -88,6 +89,7 @@ const WorkoutPage: NextPage = () => {
     
     setIsLoading(true);
     try {
+    // TODO: implement API
       const response = await client.post('/workout', {
         exercises: exercises
       });

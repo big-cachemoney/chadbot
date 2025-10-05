@@ -30,6 +30,12 @@ const Header: React.FC = () => {
                             </>
                         ) : (
                             <>
+                                <a href="/workout" className="text-sm font-medium hover:text-gray-200">
+                                    Workout
+                                </a>
+                                <a href="/profile" className="text-sm font-medium hover:text-gray-200">
+                                    Profile
+                                </a>
                                 <span className="text-sm font-medium">
                                     Welcome, {user?.username || "User"}
                                 </span>
@@ -115,6 +121,12 @@ const Header: React.FC = () => {
                             <span className="block text-gray-800 font-medium">
                                 Welcome, {user?.username || "User"}
                             </span>
+                            <a href="/workout" className="block text-gray-800 font-medium hover:text-blue-600">
+                                Workout
+                            </a>
+                            <a href="/profile" className="block text-gray-800 font-medium hover:text-blue-600">
+                                Profile
+                            </a>
                             <button
                                 onClick={logout}
                                 className="block text-gray-800 font-medium hover:text-blue-600"
