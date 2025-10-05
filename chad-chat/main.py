@@ -4,7 +4,7 @@ from llms import GoogleLLM
 from langchain.schema.runnable import RunnablePassthrough
 from langchain_core.runnables import RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
-
+from langchain.globals import set_verbose, set_debug
 from router import ChainRouter
 
 
@@ -20,6 +20,8 @@ GEMINI_2_5 = "gemini-2.5-flash"
 class ChatBot:
 
     def __init__(self):
+        # set_debug(True)
+        # set_verbose(True)
         self.__prompt_generator = PromptGenerator()
         self.__llm = GoogleLLM(GEMINI_2_5, 0.0).get_llm()
         self.__user_name = None

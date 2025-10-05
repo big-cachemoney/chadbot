@@ -9,9 +9,9 @@ class ChainRouter:
         self.__routine_chain = routine_chain
         self.__activity_chain = activity_chain
         # Get raw_data from SQL
-        self.__user_data = get_user_info(user_name)
-        self.__user_activities = get_last_activities(user_name)
-        self.__chad_personality = get_chad_personality(user_name)
+        self.__user_data = run_query(get_user_info(user_name))
+        self.__user_activities = run_query(get_last_activities(user_name))
+        self.__chad_personality = run_query(get_chad_personality(user_name))
 
     def route_query(self, info: Dict) -> Literal["retrieval", "prediction", "other"]:
         question = info["question"]
