@@ -6,7 +6,9 @@ from langchain_core.runnables import RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 from langchain.globals import set_verbose, set_debug
 from router import ChainRouter
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # self.__llm = GoogleLLM('gemini-2.0-flash-lite', 0.0).get_llm()
 # self.__llm = GoogleLLM('gemini-2.5-pro-exp-03-25', 0.0).get_llm()
