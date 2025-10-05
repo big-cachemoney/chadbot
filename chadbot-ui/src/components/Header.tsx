@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "@/hooks/useAuthContext";
+import Link from "next/link";
 
 const Header: React.FC = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -16,26 +17,26 @@ const Header: React.FC = () => {
                         <h1 className="text-lg font-bold">ChadBot</h1>
                     </div>
                     <nav className="hidden md:flex space-x-4">
-                        <a href="/" className="text-sm font-medium hover:text-gray-200">
+                        <Link href="/" className="text-sm font-medium hover:text-gray-200">
                             Home
-                        </a>
+                        </Link>
                         {!isAuthenticated ? (
                             <>
-                                <a href="/login" className="text-sm font-medium hover:text-gray-200">
+                                <Link href="/login" className="text-sm font-medium hover:text-gray-200">
                                     Login
-                                </a>
-                                <a href="/register" className="text-sm font-medium hover:text-gray-200">
+                                </Link>
+                                <Link href="/register" className="text-sm font-medium hover:text-gray-200">
                                     Register
-                                </a>
+                                </Link>
                             </>
                         ) : (
                             <>
-                                <a href="/workout" className="text-sm font-medium hover:text-gray-200">
+                                <Link href="/workout" className="text-sm font-medium hover:text-gray-200">
                                     Workout
-                                </a>
-                                <a href="/profile" className="text-sm font-medium hover:text-gray-200">
+                                </Link>
+                                <Link href="/profile" className="text-sm font-medium hover:text-gray-200">
                                     Profile
-                                </a>
+                                </Link>
                                 <span className="text-sm font-medium">
                                     Welcome, {user?.username || "User"}
                                 </span>
@@ -104,29 +105,29 @@ const Header: React.FC = () => {
                     </button>
                 </div>
                 <nav className="space-y-4 p-4">
-                    <a href="/" className="block text-gray-800 font-medium hover:text-blue-600">
+                    <Link href="/" className="block text-gray-800 font-medium hover:text-blue-600">
                         Home
-                    </a>
+                    </Link>
                     {!isAuthenticated ? (
                         <>
-                            <a href="/login" className="block text-gray-800 font-medium hover:text-blue-600">
+                            <Link href="/login" className="block text-gray-800 font-medium hover:text-blue-600">
                                 Login
-                            </a>
-                            <a href="/register" className="block text-gray-800 font-medium hover:text-blue-600">
+                            </Link>
+                            <Link href="/register" className="block text-gray-800 font-medium hover:text-blue-600">
                                 Register
-                            </a>
+                            </Link>
                         </>
                     ) : (
                         <>
                             <span className="block text-gray-800 font-medium">
                                 Welcome, {user?.username || "User"}
                             </span>
-                            <a href="/workout" className="block text-gray-800 font-medium hover:text-blue-600">
+                            <Link href="/workout" className="block text-gray-800 font-medium hover:text-blue-600">
                                 Workout
-                            </a>
-                            <a href="/profile" className="block text-gray-800 font-medium hover:text-blue-600">
+                            </Link>
+                            <Link href="/profile" className="block text-gray-800 font-medium hover:text-blue-600">
                                 Profile
-                            </a>
+                            </Link>
                             <button
                                 onClick={logout}
                                 className="block text-gray-800 font-medium hover:text-blue-600"
